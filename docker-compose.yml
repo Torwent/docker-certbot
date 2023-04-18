@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  certbot:
+    container_name: "certbot"
+    image: certbot/dns-cloudflare:latest
+    tty: true
+    command: renew --dns-cloudflare
+    volumes:
+      - /docker/etc/letsencrypt:/etc/letsencrypt
+      - /docker/var/lib/letsencrypt:/var/lib/letsencrypt
+      - /docker/data/letsencrypt:/data/letsencrypt
+      - /docker/var/log/letsencrypt:/var/log/letsencrypt
